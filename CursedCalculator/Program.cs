@@ -9,10 +9,10 @@ namespace CursedCalculator
     {
         public static void Main()
         {
-            Console.WriteLine("Welcome to Cursed Calculator™!\n" +
-                              "This calculator can be a bit finicky, but do not fear! \n" +
+            Console.WriteLine("Welcome to Cursed Calculator™.\n" +
+                              "This calculator can be a bit finicky, but do not fear. \n" +
                               "Our worker monkeys are working around the clock to keep it from collapsing!\n" +
-                              "To help us, please make sure your output value is never below 0! Negative inputs are a-okay!\n");
+                              "To help us, please make sure your output value is never below 0. Negative inputs are a-okay!\n");
 
             while (true)
             {
@@ -41,15 +41,15 @@ namespace CursedCalculator
                 {
                     Console.WriteLine("You can't divide by zero! Please try again.");
                 }
-                catch (NegativeRootError)
+                catch (NegativeRootException)
                 {
                     Console.WriteLine("You can't use negative values on a square root! Please try again.");
                 }
-                catch (NegativeOutputError)
+                catch (NegativeOutputException)
                 {
                     Console.WriteLine("Output can't be a negative value! Please try again.");
                 }
-                catch (InvalidOperatorError)
+                catch (InvalidOperatorException)
                 {
                     Console.WriteLine("Invalid operator! Please try again.");
                 }
@@ -78,7 +78,7 @@ namespace CursedCalculator
 
         private static string PromptOperator()
         {
-            string[] ValidOperators = new string[] { "+", "-", "*", "/", "**", "//", "^", "√" };
+            string[] ValidOperators = new string[] { "+", "-", "*", "/", "**", "^", "//", "√" };
 
             while (true)
             {
@@ -96,11 +96,11 @@ namespace CursedCalculator
 
         private static void ShowResult(string op, double ValueA, double ValueB, double result)
         {
-            string[] SqrtOperators = new string[] { "//", "^", "√" };
+            string[] SqrtOperators = new string[] { "//", "√" };
 
             if (result < 0)
             {
-                throw new NegativeOutputError();
+                throw new NegativeOutputException();
             }
 
             if (SqrtOperators.Any(op.Contains))
@@ -131,12 +131,12 @@ namespace CursedCalculator
                     return Multiply(ValueA, ValueB);
                 case "/":
                     return Divide(ValueA, ValueB);
-                case "**":
+                case "**" or "^":
                     return Pow(ValueA, ValueB);
-                case "//" or "^" or "√":
+                case "//" or "√":
                     return Sqrt(ValueA);
                 default:
-                    throw new InvalidOperatorError();
+                    throw new InvalidOperatorException();
             }
         }
 
@@ -172,26 +172,26 @@ namespace CursedCalculator
         {
             if (Value < 0)
             {
-                throw new NegativeRootError();
+                throw new NegativeRootException();
             }
 
             return Math.Sqrt(Value);
         }
     }
 
-    // Custom errors
-    public class NegativeRootError : ArithmeticException
+    // Custom exceptions
+    public class NegativeRootException : ArithmeticException
     {
-        public NegativeRootError() { }
+        public NegativeRootException() { }
     }
 
-    public class NegativeOutputError : ArgumentException
+    public class NegativeOutputException : ArgumentException
     {
-        public NegativeOutputError() { }
+        public NegativeOutputException() { }
     }
 
-    public class InvalidOperatorError : ArgumentException
+    public class InvalidOperatorException : ArgumentException
     {
-        public InvalidOperatorError() { }
+        public InvalidOperatorException() { }
     }
 }
