@@ -14,7 +14,9 @@ namespace PetShop
 
     public class Toys : ISellable
     {
-        // This doesn't feel like the right way to do this. Too roundabout? Like, why would you use this over an abstract class?
+        /// <summary>
+        /// Constructor for Toys. Sets default props, assuming a tennis ball.
+        /// </summary>
         public double GetPrice()
         {
             return 5.99;
@@ -29,6 +31,9 @@ namespace PetShop
     
     public class Food : ISellable
     {
+        /// <summary>
+        /// Constructor for Food. Sets default props, assuming dog food.
+        /// </summary>
         public double GetPrice()
         {
             return 18.89;
