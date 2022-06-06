@@ -4,12 +4,12 @@ namespace PetShop
 {
     public abstract class Animal
     {
-        public string sound { get; private protected set; }
-        public double price { get; private protected set; }
-        public double weight { get; private protected set; }
+        public string Sound { get; private protected set; }
+        public double Price { get; private protected set; }
+        public double Weight { get; private protected set; }
 
         public virtual string GetSpecies() => GetType().Name;
-        public virtual void MakeSound() => Console.WriteLine(sound);
+        public virtual void MakeSound() => Console.WriteLine(Sound);
     }
 
     // Individual Animals
@@ -20,9 +20,9 @@ namespace PetShop
         /// </summary>
         public Dog()
         {
-            sound = "Woof woof";
-            price = 249.99;
-            weight = 15;
+            Sound = "Woof woof";
+            Price = 249.99;
+            Weight = 15;
         }
     }
 
@@ -33,23 +33,23 @@ namespace PetShop
         /// </summary>
         public Bird()
         {
-            sound = "Tweet";
-            price = 49.99;
-            weight = 0.25;
+            Sound = "Tweet";
+            Price = 49.99;
+            Weight = 0.25;
         }
     }
 
 
-public class Fish : Animal
+    public class Fish : Animal
     {
         /// <summary>
         /// Constructor for Fish. Sets defaults props.
         /// </summary>
         public Fish()
         {
-            sound = "Blub blub";
-            price = 4.99;
-            weight = 0.1;
+            Sound = "Blub blub";
+            Price = 4.99;
+            Weight = 0.1;
         }
     }
 
@@ -61,9 +61,9 @@ public class Fish : Animal
         /// </summary>
         public Blåhaj()
         {
-            sound = "Feed me the flesh of the fallen";
-            price = 30;
-            weight = 0.64;
+            Sound = "Feed me the flesh of the fallen";
+            Price = 30;
+            Weight = 0.64;
         }
     }
 }
