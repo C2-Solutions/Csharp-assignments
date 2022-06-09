@@ -4,10 +4,7 @@ namespace PetShop
 {
     public interface ISellable
     {
-        string GetName()
-            {
-                return GetType().Name;
-            }
+        string GetName() { return GetType().Name; }
         double GetPrice();
         double GetWeight();
     }

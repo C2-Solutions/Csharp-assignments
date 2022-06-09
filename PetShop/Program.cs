@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Globalization;
 using System.Collections.Generic;
 
 namespace PetShop
@@ -47,15 +46,11 @@ namespace PetShop
         // Main functions
         public static void AnimalPrintSpecies(List<Animal> animals)
         // Prints the species of every animal
-        {
-            foreach (Animal animal in animals) { Console.WriteLine($"- {animal.GetSpecies()}"); }
-        }
+        { foreach (Animal animal in animals) { Console.WriteLine($"- {animal.GetSpecies()}"); } }
 
         public static void AnimalPrintSounds(List<Animal> animals)
         // Prints the sound of every animal
-        {
-            foreach (Animal animal in animals) {   animal.MakeSound(); }
-        }
+        { foreach (Animal animal in animals) {   animal.MakeSound(); } }
 
         public static double CombinedPriceAnimals(List<Animal> animals)
         // Prints out the combined price of every animal
