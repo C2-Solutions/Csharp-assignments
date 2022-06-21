@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="externals\icons\address-book.svg" />
+    <None Remove="externals\icons\bars.svg" />
+    <None Remove="externals\icons\building.svg" />
+    <None Remove="externals\icons\chart-bar.svg" />
+    <None Remove="externals\icons\floppy-disk.svg" />
+    <None Remove="externals\icons\user.svg" />
+    <None Remove="externals\logo\ico-128px.ico" />
+    <None Remove="externals\logo\ico-48px.ico" />
+    <None Remove="ico-128px.ico" />
+    <None Remove="ico-128px.png" />
+    <None Remove="logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="ico-128px.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+</Project>
