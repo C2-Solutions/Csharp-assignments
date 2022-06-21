@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 
 // TODO: Figure out how to handle the namespaces
-namespace Rentize.Views.Houses
+namespace Rentize
 {
     /// <summary>
     /// Interaction logic for Houses.xaml
@@ -14,6 +14,7 @@ namespace Rentize.Views.Houses
             InitializeComponent();
         }
 
+        // TODO: Fix and remove this
         private void InitializeComponent()
         {
             throw new NotImplementedException();

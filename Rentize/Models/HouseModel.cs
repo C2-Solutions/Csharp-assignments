@@ -13,7 +13,7 @@ namespace Rentize.Models
         [Required]
         public string HouseOwner { get; set; }
         public List<string> HouseTennants { get; set; }
-        public HouseTypes HouseType { get; set; } 
+        public HouseTypes HouseType { get; set; }
         public HouseStyles HouseStyle { get; set; }
 
         [Timestamp]

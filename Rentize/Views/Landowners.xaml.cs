@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Controls;
 
-namespace Rentize.Views.Landowners
+namespace Rentize
 {
     /// <summary>
     /// Interaction logic for Landowners.xaml
