@@ -1,7 +1,7 @@
 ﻿namespace Rentize.Models
 {
     // https://www.quickenloans.com/learn/types-of-houses
-    internal enum HouseTypes
+    enum HouseTypes
     {
         TOWN_HOME,
         SINGLE_FAMILY_HOME,
@@ -13,7 +13,7 @@
     }
 
     // https://www.quickenloans.com/learn/types-of-houses
-    internal enum HouseStyles
+    enum HouseStyles
     {
         DEFAULT,
         RANCH,
