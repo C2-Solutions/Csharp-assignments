@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AirbnbDashboard.Model
 {
@@ -17,13 +12,10 @@ namespace AirbnbDashboard.Model
         private string _email;
         private ObservableCollection<Reservation> _reservations;
 
-        public int id { get; set; }
+        public int Id { get; set; }
         public string FirstName
         {
-            get
-            {
-                return _firstName;
-            }
+            get => _firstName;
             set
             {
                 _firstName = value;
@@ -33,10 +25,7 @@ namespace AirbnbDashboard.Model
         }
         public string Lastname
         {
-            get
-            {
-                return _lastName;
-            }
+            get => _lastName;
             set
             {
                 _lastName = value;
@@ -46,10 +35,7 @@ namespace AirbnbDashboard.Model
         }
         public string Email
         {
-            get
-            {
-                return _email;
-            }
+            get => _email;
             set
             {
                 _email = value;
@@ -59,10 +45,7 @@ namespace AirbnbDashboard.Model
         }
         public ObservableCollection<Reservation> Reservations
         {
-            get
-            {
-                return _reservations;
-            }
+            get => _reservations;
             set
             {
                 _reservations = value;
@@ -73,10 +56,7 @@ namespace AirbnbDashboard.Model
 
         private void Notify(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs("propertyName"));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("propertyName"));
         }
     }
 }

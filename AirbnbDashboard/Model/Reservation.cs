@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AirbnbDashboard.Model
 {
@@ -16,14 +12,11 @@ namespace AirbnbDashboard.Model
         private DateTime _startDate;
         private DateTime _endDate;
 
-        public int id { get; set; }
+        public int Id { get; set; }
 
         public int CustomerId
         {
-            get
-            {
-                return _customerId;
-            }
+            get => _customerId;
             set
             {
                 _customerId = value;
@@ -34,10 +27,7 @@ namespace AirbnbDashboard.Model
         public Customer Customer { get; set; }
         public int HouseId
         {
-            get
-            {
-                return _houseId;
-            }
+            get => _houseId;
             set
             {
                 _houseId = value;
@@ -49,10 +39,7 @@ namespace AirbnbDashboard.Model
 
         public DateTime StartDate
         {
-            get
-            {
-                return _startDate;
-            }
+            get => _startDate;
             set
             {
                 _startDate = value;
@@ -63,10 +50,7 @@ namespace AirbnbDashboard.Model
 
         public DateTime EndDate
         {
-            get
-            {
-                return _endDate;
-            }
+            get => _endDate;
             set
             {
                 _endDate = value;
@@ -77,10 +61,7 @@ namespace AirbnbDashboard.Model
 
         private void Notify(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs("propertyName"));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("propertyName"));
         }
     }
 }

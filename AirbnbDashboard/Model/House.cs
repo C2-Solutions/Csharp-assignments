@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AirbnbDashboard.Model
 {
@@ -19,20 +14,17 @@ namespace AirbnbDashboard.Model
         private int _numberOfRooms;
         private int _numberOfBeds;
         private int _maxPeople;
-        private bool   _smoking;
-        private bool   _pets;
-        private bool   _wifi;
+        private bool _smoking;
+        private bool _pets;
+        private bool _wifi;
         private double _price;
         private string _description;
         private ObservableCollection<Reservation> _reservations;
 
-        public int id { get; set; }
+        public int Id { get; set; }
         public int LandlordId
         {
-            get
-            {
-                return _landlordId;
-            }
+            get => _landlordId;
             set
             {
                 _landlordId = value;
@@ -40,13 +32,10 @@ namespace AirbnbDashboard.Model
                 Notify("LandlordId");
             }
         }
-        public Landlord Landlord {  get; set; }
+        public Landlord Landlord { get; set; }
         public TypeHouse TypeHouse
         {
-            get
-            {
-                return _typeHouse;
-            }
+            get => _typeHouse;
             set
             {
                 _typeHouse = value;
@@ -56,10 +45,7 @@ namespace AirbnbDashboard.Model
         }
         public string HouseAdress
         {
-            get
-            {
-                return _houseadress;
-            }
+            get => _houseadress;
             set
             {
                 _houseadress = value;
@@ -69,10 +55,7 @@ namespace AirbnbDashboard.Model
         }
         public string HouseCity
         {
-            get
-            {
-                return _housecity;
-            }
+            get => _housecity;
             set
             {
                 _housecity = value;
@@ -82,10 +65,7 @@ namespace AirbnbDashboard.Model
         }
         public int NumberOfRooms
         {
-            get
-            {
-                return _numberOfRooms;
-            }
+            get => _numberOfRooms;
             set
             {
                 _numberOfRooms = value;
@@ -95,10 +75,7 @@ namespace AirbnbDashboard.Model
         }
         public int NumberOfBeds
         {
-            get
-            {
-                return _numberOfBeds;
-            }
+            get => _numberOfBeds;
             set
             {
                 _numberOfBeds = value;
@@ -108,10 +85,7 @@ namespace AirbnbDashboard.Model
         }
         public int MaxPeople
         {
-            get
-            {
-                return _maxPeople;
-            }
+            get => _maxPeople;
             set
             {
                 _maxPeople = value;
@@ -121,10 +95,7 @@ namespace AirbnbDashboard.Model
         }
         public bool Smoking
         {
-            get
-            {
-                return _smoking;
-            }
+            get => _smoking;
             set
             {
                 _smoking = value;
@@ -134,10 +105,7 @@ namespace AirbnbDashboard.Model
         }
         public bool Pets
         {
-            get
-            {
-                return _pets;
-            }
+            get => _pets;
             set
             {
                 _pets = value;
@@ -147,10 +115,7 @@ namespace AirbnbDashboard.Model
         }
         public bool Wifi
         {
-            get
-            {
-                return _wifi;
-            }
+            get => _wifi;
             set
             {
                 _wifi = value;
@@ -160,10 +125,7 @@ namespace AirbnbDashboard.Model
         }
         public double Price
         {
-            get
-            {
-                return _price;
-            }
+            get => _price;
             set
             {
                 _price = value;
@@ -174,10 +136,7 @@ namespace AirbnbDashboard.Model
 
         public string Description
         {
-            get
-            {
-                return _description;
-            }
+            get => _description;
             set
             {
                 _description = value;
@@ -188,18 +147,12 @@ namespace AirbnbDashboard.Model
 
         private void Notify(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs("propertyName"));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("propertyName"));
         }
 
         public ObservableCollection<Reservation> Reservations
         {
-            get
-            {
-                return _reservations;
-            }
+            get => _reservations;
             set
             {
                 _reservations = value;
@@ -207,11 +160,6 @@ namespace AirbnbDashboard.Model
                 Notify("Houses");
             }
         }
-    }
-
-    public enum TypeHouse
-    {
-        Bungalow, Apartment, House, Villa, Penthouse
     }
 
 }

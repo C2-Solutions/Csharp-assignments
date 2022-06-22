@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AirbnbDashboard.Model
 {
@@ -19,13 +14,10 @@ namespace AirbnbDashboard.Model
         private string _email;
         private ObservableCollection<House> _houses;
 
-        public int id { get; set; }
+        public int Id { get; set; }
         public string FirstName
         {
-            get
-            {
-                return _firstname;
-            }
+            get => _firstname;
             set
             {
                 _firstname = value;
@@ -35,10 +27,7 @@ namespace AirbnbDashboard.Model
         }
         public string LastName
         {
-            get
-            {
-                return _lastname;
-            }
+            get => _lastname;
             set
             {
                 _lastname = value;
@@ -48,10 +37,7 @@ namespace AirbnbDashboard.Model
         }
         public string Phone
         {
-            get
-            {
-                return _phone;
-            }
+            get => _phone;
             set
             {
                 _phone = value;
@@ -61,10 +47,7 @@ namespace AirbnbDashboard.Model
         }
         public string Email
         {
-            get
-            {
-                return _email;
-            }
+            get => _email;
             set
             {
                 _email = value;
@@ -74,24 +57,18 @@ namespace AirbnbDashboard.Model
         }
         public ObservableCollection<House> Houses
         {
-            get
-            {
-                return _houses;
-            }
+            get => _houses;
             set
             {
                 _houses = value;
 
                 Notify("Houses");
             }
-        }   
+        }
 
-        private void Notify (string propertyName)
+        private void Notify(string propertyName)
         {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs("propertyName"));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("propertyName"));
         }
     }
 }

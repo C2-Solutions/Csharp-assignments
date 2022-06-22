@@ -1,11 +1,6 @@
 ﻿using AirbnbDashboard.Model;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using AirbnbDashboard.Classes;
 
@@ -44,7 +39,7 @@ namespace AirbnbDashboard.ViewModel
 
         private void AddLandlord(object a)
         {
-            Landlord newLandlord = new Landlord
+            Landlord newLandlord = new()
             {
                 FirstName = "Add your firstname here!",
                 LastName = "Add your lastname here!",
@@ -59,9 +54,9 @@ namespace AirbnbDashboard.ViewModel
         {
             if (SelectedLandlord != null)
             {
-                House newHouse = new House
+                House newHouse = new()
                 {
-                    LandlordId = SelectedLandlord.id,
+                    LandlordId = SelectedLandlord.Id,
                     TypeHouse = TypeHouse.House,
                     HouseAdress = "Add houseadress here!",
                     HouseCity = "Add city of the house here!",
@@ -79,10 +74,7 @@ namespace AirbnbDashboard.ViewModel
                 AllHouses.Add(newHouse);
             }
         }
-        private void Update(object a)
-        {
-            _db.SaveChanges();
-        }
+        private void Update(object a) => _db.SaveChanges();
         private void RemoveLandlord(object a)
         {
             AllLandlords.Remove(SelectedLandlord);
