@@ -5,18 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vms="clr-namespace:AirbnbDashboard.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="750" Width="1500" Background="GhostWhite">
+        Title="Airbnb Dashboard" Height="900" Width="1600" Background="GhostWhite">
     <Window.DataContext>
         <vms:MainWindowViewModel/>
     </Window.DataContext>
     <Grid Margin="50,10,50,32">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="220*"/>
-            <ColumnDefinition Width="220*"/>
-            <ColumnDefinition Width="300*"/>
-            <ColumnDefinition Width="220*"/>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="300*"/>
+            <ColumnDefinition Width="244*"/>
+            <ColumnDefinition Width="321*"/>
+            <ColumnDefinition Width="244*"/>
+            <ColumnDefinition Width="244*"/>
+            <ColumnDefinition Width="333*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -25,30 +24,22 @@
             <RowDefinition Height="120*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="All landlords" HorizontalAlignment="Center" VerticalAlignment="Center" Width="114" Height="36" FontWeight="Bold" FontSize="16"/>
-        <Label Content="Houses owned by landlord" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="214" Height="36" FontWeight="Bold" FontSize="16"/>
-        <Label Content="All houses" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="88" Height="35" FontSize="16" FontWeight="Bold"/>
+        <!-- Top bar labels -->
+        <Label Content="All Landlords" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="16" Margin="10,10,10,10"/>
+        <Label Content="Landlord Information" Grid.Column="1" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="16" Margin="11,10,10,10"/>
+        <Label Content="Houses Owned" Grid.Column="2" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="16" Margin="10,10,10,10"/>
+        <Label Content="All Houses" Grid.Column="3" HorizontalContentAlignment="Center" FontSize="16" FontWeight="Bold" Margin="10,10,10,10"/>
+        <Label Content="House Information" Grid.Column="5" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="16" Margin="10,10,10,10" RenderTransformOrigin="1.905,-2.756"/>
+        <!-- End top bar labels -->
 
+        <!-- All Landlords -->
         <StackPanel x:Name="AllLandlords"
-                    Grid.Column="0" Margin="0,55,0,0" Grid.RowSpan="2">
-            <ListBox ItemsSource="{Binding AllLandlords }" DisplayMemberPath="LastName" SelectedItem="{Binding SelectedLandlord}" Width="220"/>
-
-        </StackPanel>
-        <StackPanel x:Name="AllHouses"
-                    Grid.Column="3" Margin="10,55,0,0" Grid.RowSpan="2" Grid.ColumnSpan="2">
-            <ListBox ItemsSource="{Binding AllHouses}" DisplayMemberPath="HouseAdress" Width="220" SelectedItem="{Binding SelectedHouse}"/>
-
-        </StackPanel>
-        <StackPanel x:Name="HousesLandlord"
-                    Grid.Column="1" Margin="0,55,0,0" Grid.RowSpan="2">
-            <ListBox ItemsSource="{Binding SelectedLandlord.Houses}" DisplayMemberPath="HouseAdress" Height="300
-                     " Width="220
-                     "/>
-
+                    Grid.Column="0" Margin="10,10,10,10" Grid.Row="1">
+            <ListBox ItemsSource="{Binding AllLandlords }" DisplayMemberPath="LastName" SelectedItem="{Binding SelectedLandlord}" Width="200" HorizontalAlignment="Center" Margin="10,10,10,10"/>
         </StackPanel>
 
-        <!--Start landlords buttons-->
-        <Button x:Name="AddLandlordBtn" Content="ADD LANDLORD" HorizontalAlignment="Left" Margin="9,82,0,0" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" FontFamily="Calibri" Foreground="GhostWhite" Height="35" Width="202" Command="{Binding AddLandlordClick}">
+        <!-- Buttons -->
+        <Button x:Name="AddLandlordBtn" Content="ADD LANDLORD" Margin="35,80,35,25" Grid.Row="2" FontWeight="Bold" FontSize="16" FontFamily="Calibri" Foreground="GhostWhite" Command="{Binding AddLandlordClick}">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF369E58" Offset="1"/>
@@ -56,7 +47,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="EditLandlordBtn" Content="SAVE" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center"  FontWeight="Bold" FontSize="16" FontFamily="Calibri" Foreground="GhostWhite" Height="34" Width="200" Command="{Binding UpdateClick}" Grid.Column="2">
+        <Button x:Name="EditLandlordBtn" Content="SAVE" Grid.Row="2" FontWeight="Bold" FontSize="16" FontFamily="Calibri" Foreground="GhostWhite" Command="{Binding UpdateClick}" Grid.Column="1" Margin="77,54,77,53.8">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFC7A037" Offset="1"/>
@@ -64,7 +55,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="DeleteLandlordBtn" Content="DELETE" HorizontalAlignment="Left" Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Calibri" FontSize="16" Foreground="GhostWhite" Margin="10,41,0,0" Height="34" Width="201" Command="{Binding RemoveLandlordClick}">
+        <Button x:Name="DeleteLandlordBtn" Content="DELETE" Grid.Row="2" FontWeight="Bold" FontFamily="Calibri" FontSize="16" Foreground="GhostWhite" Margin="35,25,35,80" Command="{Binding RemoveLandlordClick}">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFB43B47" Offset="1"/>
@@ -72,10 +63,73 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <!--End landlord buttons-->
+        <!-- End all Landlords -->
 
-        <!--Start Selected house buttons-->
-        <Button x:Name="DeleteSelectedHouseBtn"   Content="DELETE" Grid.Column="5" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Center" Foreground="GhostWhite" FontFamily="Calibri" FontWeight="Bold" FontSize="16" Height="34" Width="202" Command="{Binding RemoveHouseClick}">
+        <!-- Landlord information -->
+        <TextBox Grid.Column="4" Height="27" Margin="0,14,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedLandlord.FirstName}" VerticalAlignment="Top" Name="LandlordFirstname" HorizontalAlignment="Right" Width="237"/>
+
+        <Label Content="Name:" Grid.Column="1" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,10,226,0" Grid.Row="1"/>
+        <Label Content="Surname:" Grid.Column="1" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,47,223,0" Grid.Row="1"/>
+        <TextBox Grid.Column="4" Height="27" Margin="113,52,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedLandlord.LastName}" VerticalAlignment="Top" Name="LandlordLastname"/>
+        <Label Content="Phone:" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Width="88" Height="36" FontWeight="Bold" FontSize="16" Margin="10,84,0,0" Grid.Row="1"/>
+        <Label Content="Email:" Grid.Column="1" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,121,223,0" Grid.Row="1"/>
+
+        <TextBox Grid.Column="4" Height="27" Margin="113,91,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedLandlord.Phone}" VerticalAlignment="Top" Name="LandLordphonenumber"/>
+        <TextBox Grid.Column="4" Height="27" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedLandlord.Email}" VerticalAlignment="Top" Name="LandlordEmail" Margin="113,127,10,0"/>
+        <!-- End landlord information -->
+
+        <!-- Houses owned -->
+        <StackPanel x:Name="HousesOwned"
+                    Grid.Column="2" Margin="10,10,10,10" Grid.Row="1">
+            <ListBox ItemsSource="{Binding AllHouses}" DisplayMemberPath="HouseAdress" SelectedItem="{Binding SelectedHouse}" Width="200" Margin="10,10,10,10" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <!-- End houses owned -->
+
+        <!-- All houses -->
+        <StackPanel x:Name="AllHouses"
+                    Grid.Column="3" Margin="10,10,10,10" Grid.Row="1">
+            <ListBox ItemsSource="{Binding SelectedLandlord.Houses}" DisplayMemberPath="HouseAdress" Width="200" Margin="10,10,10,10" HorizontalAlignment="Center"/>
+        </StackPanel>
+        <!-- End all houses -->
+
+        <!-- House information-->
+        <Label Content="Type:" Grid.Column="4" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,10,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="90"/>
+        <TextBox Grid.Column="1" Height="25" Margin="0,16,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.TypeHouse}" VerticalAlignment="Top" x:Name="LandlordLastname_Copy1" HorizontalAlignment="Right" Width="211"/>
+
+        <Label Content="Address:" Grid.Column="4" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,47,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="115"/>
+        <TextBox Grid.Column="1" Height="25" Margin="0,53,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.HouseAdress}" VerticalAlignment="Top" x:Name="LandlordLastname_Copy" HorizontalAlignment="Right" Width="210"/>
+
+        <Label Content="City:" Grid.Column="4" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,84,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="115"/>
+        <TextBox Grid.Column="1" Height="25" Margin="0,90,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.HouseCity}" VerticalAlignment="Top" x:Name="LandLordphonenumber_Copy" HorizontalAlignment="Right" Width="211"/>
+
+        <Label Content="Rooms:" Grid.Column="4" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,121,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="76"/>
+        <TextBox Grid.Column="1" Height="25" Margin="0,127,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.NumberOfRooms}" VerticalAlignment="Top" x:Name="LandlordEmail_Copy" HorizontalAlignment="Right" Width="211"/>
+
+        <Label Content="Beds:" Grid.Column="4" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,158,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="115"/>
+        <TextBox Grid.Column="4" Height="25" Margin="0,163,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.NumberOfBeds}" VerticalAlignment="Top" x:Name="LandlordEmail_Copy1" HorizontalAlignment="Right" Width="237"/>
+
+        <Label Content="Max ppl:" Grid.Column="4" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,195,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="115"/>
+        <TextBox Grid.Column="4" Height="25" Margin="0,200,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.MaxPeople}" VerticalAlignment="Top" x:Name="LandlordEmail_Copy2" HorizontalAlignment="Right" Width="237"/>
+
+        <Label Content="Smoking:" Grid.Column="4" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,232,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="115" />
+        <CheckBox Grid.Column="5" Content="" Margin="113,244,200,0" Grid.Row="1" VerticalAlignment="Top" IsChecked="{Binding SelectedHouse.Smoking}" Height="15"/>
+
+        <Label Content="Pets:" Grid.Column="4" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,269,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="115"/>
+        <CheckBox Grid.Column="5" Content="" Margin="113,279,200,0" Grid.Row="1" VerticalAlignment="Top" IsChecked="{Binding SelectedHouse.Pets}" Height="15"/>
+
+        <Label Content="Wifi:" Grid.Column="4" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,306,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="115"/>
+        <CheckBox Grid.Column="5" Content="" Margin="113,316,200,0" Grid.Row="1" VerticalAlignment="Top" IsChecked="{Binding SelectedHouse.Wifi}" Height="15"/>
+
+        <Label Content="Price:" Grid.Column="4" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,343,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="115"/>
+        <TextBox Grid.Column="5" Height="25" Margin="113,349,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.Price}" VerticalAlignment="Top" x:Name="LandlordEmail_Copy3"/>
+
+        <Label Content="Short desc:" Grid.Column="4" VerticalAlignment="Top" Height="36" FontWeight="Bold" FontSize="16" Margin="10,379,0,0" Grid.Row="1" HorizontalAlignment="Left" Width="130"/>
+        <TextBox Grid.Column="5" Margin="13,415,10,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.Description}" x:Name="LandlordEmail_Copy4" Height="52" VerticalAlignment="Top"/>
+
+        <Label Grid.Column="4" Margin="13,502,13,0" Grid.Row="1" Content="Before clicking &quot;Add House&quot;, select a landlord!" HorizontalContentAlignment="Center" FontStyle="Normal" FontWeight="Bold" Height="35" VerticalAlignment="Top"/>
+
+        <!-- Buttons -->
+        <Button x:Name="DeleteSelectedHouseBtn" Content="DELETE" Grid.Column="4" Grid.Row="2" Foreground="GhostWhite" FontFamily="Calibri" FontWeight="Bold" FontSize="16" Command="{Binding RemoveHouseClick}" Margin="82,27,84,81">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FFB43B47" Offset="1"/>
@@ -83,7 +137,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="CreateNewHouseBtn"        Content="ADD HOUSE" HorizontalAlignment="Center" Margin="0,82,0,0" Grid.Row="2" VerticalAlignment="Top" Foreground="GhostWhite" FontFamily="Calibri" FontWeight="Bold" FontSize="16"  Grid.Column="5" Height="35" Width="202" Command="{Binding AddHouseClick}">
+        <Button x:Name="CreateNewHouseBtn" Content="ADD HOUSE" Margin="82,80,84,25" Grid.Row="2" Foreground="GhostWhite" FontFamily="Calibri" FontWeight="Bold" FontSize="16" Grid.Column="4" Command="{Binding AddHouseClick}">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF369E58" Offset="1"/>
@@ -91,46 +145,7 @@
                 </LinearGradientBrush>
             </Button.Background>
         </Button>
-        <!--End Selected House buttons-->
-        
-        <!--Start of Data Landlord-->
-        <Label Content="data of landlord" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="214" Height="36" FontWeight="Bold" FontSize="16"/>
-        <Label Content="Firstname:" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,10,0,0" Grid.Row="1"/>
-        <Label Content="Lastname:" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,78,0,0" Grid.Row="1"/>
-        <Label Content="Phonenumber:" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,165,0,0" Grid.Row="1"/>
-        <Label Content="Email:" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,0,0,0" Grid.Row="1"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Center" Height="27" Margin="0,51,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedLandlord.FirstName}" VerticalAlignment="Top" Width="220" Name="LandlordFirstname"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Center" Height="27" Margin="0,114,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedLandlord.LastName}" VerticalAlignment="Top" Width="220" Name="LandlordLastname"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Center" Height="27" Margin="0,214,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedLandlord.Phone}" VerticalAlignment="Top" Width="220" Name="LandLordphonenumber"/>
-        <TextBox Grid.Column="2" HorizontalAlignment="Center" Height="27" Margin="0,277,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedLandlord.Email}" VerticalAlignment="Top" Width="220" Name="LandlordEmail"/>
-        <!--End of Data Landlord-->
-
-        <!--Start of Data House-->
-        <Label Content="data of House;" Grid.Column="5" HorizontalAlignment="Center" VerticalAlignment="Center" Width="214" Height="36" FontWeight="Bold" FontSize="16"/>
-        <Label Content="Housetype:" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,10,0,0" Grid.Row="1"/>
-        <Label Content="House adress:" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="13,47,0,0" Grid.Row="1"/>
-        <Label Content="City:" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,88,0,0" Grid.Row="1"/>
-        <Label Content="Number of rooms:" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,129,0,0" Grid.Row="1"/>
-        <TextBox Grid.Column="5" HorizontalAlignment="Left" Height="27" Margin="123,52,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.HouseAdress}" VerticalAlignment="Top" Width="220" x:Name="LandlordLastname_Copy"/>
-        <TextBox Grid.Column="5" HorizontalAlignment="Left" Height="27" Margin="120,88,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.HouseCity}" VerticalAlignment="Top" Width="220" x:Name="LandLordphonenumber_Copy"/>
-        <TextBox Grid.Column="5" HorizontalAlignment="Left" Height="27" Margin="166,134,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.NumberOfRooms}" VerticalAlignment="Top" Width="220" x:Name="LandlordEmail_Copy"/>
-        <Label Content="Number of beds:" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,170,0,0" Grid.Row="1"/>
-        <TextBox Grid.Column="5" HorizontalAlignment="Left" Height="27" Margin="169,175,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.NumberOfBeds}" VerticalAlignment="Top" Width="220" x:Name="LandlordEmail_Copy1"/>
-        <Label Content="Max amount of poeple:" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,207,0,0" Grid.Row="1"/>
-        <TextBox Grid.Column="5" HorizontalAlignment="Left" Height="27" Margin="203,214,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.MaxPeople}" VerticalAlignment="Top" Width="220" x:Name="LandlordEmail_Copy2"/>
-        <Label Content="Smoking:" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="13,248,0,0" Grid.Row="1" />
-        <Label Content="Pets:" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,289,0,0" Grid.Row="1"/>
-        <Label Content="Wifi:" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,330,0,0" Grid.Row="1"/>
-        <Label Content="Price:" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,371,0,0" Grid.Row="1"/>
-        <Label Content="Description:" Grid.Column="5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="214" Height="36" FontWeight="Bold" FontSize="16" Margin="10,408,0,0" Grid.Row="1"/>
-        <TextBox Grid.Column="5" HorizontalAlignment="Left" Height="27" Margin="113,376,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.Price}" VerticalAlignment="Top" Width="220" x:Name="LandlordEmail_Copy3"/>
-        <TextBox Grid.Column="5" HorizontalAlignment="Left" Height="30" Margin="13,449,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.Description}" VerticalAlignment="Top" Width="310" x:Name="LandlordEmail_Copy4"/>
-        <CheckBox Grid.Column="5" Content="" HorizontalAlignment="Left" Margin="233,258,0,0" Grid.Row="1" VerticalAlignment="Top" IsChecked="{Binding SelectedHouse.Smoking}"/>
-        <CheckBox Grid.Column="5" Content="" HorizontalAlignment="Left" Margin="233,299,0,0" Grid.Row="1" VerticalAlignment="Top" IsChecked="{Binding SelectedHouse.Pets}"/>
-        <CheckBox Grid.Column="5" Content="" HorizontalAlignment="Left" Margin="233,340,0,0" Grid.Row="1" VerticalAlignment="Top" IsChecked="{Binding SelectedHouse.Wifi}"/>
-        <TextBox Grid.Column="5" HorizontalAlignment="Left" Height="27" Margin="123,10,0,0" Grid.Row="1" TextWrapping="Wrap" Text="{Binding SelectedHouse.TypeHouse}" VerticalAlignment="Top" Width="220" x:Name="LandlordLastname_Copy1"/>
-        <TextBlock Grid.Column="5" HorizontalAlignment="Left" Margin="26,484,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Before Clicking Add House Select a landlord!!!" VerticalAlignment="Top"/>
-        <!--Start of Data House-->
+        <!-- End house information -->
 
     </Grid>
 </Window>
