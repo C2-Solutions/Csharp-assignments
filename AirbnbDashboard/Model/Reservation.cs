@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Airbnb_klas.Model
+namespace AirbnbDashboard.Model
 {
     public class Reservation : INotifyPropertyChanged
     {

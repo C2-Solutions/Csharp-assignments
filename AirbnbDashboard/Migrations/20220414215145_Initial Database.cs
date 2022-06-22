@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Airbnb_klas.Migrations
+namespace AirbnbDashboard.Migrations
 {
     public partial class InitialDatabase : Migration
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace Airbnb_klas.Classes
+namespace AirbnbDashboard.Classes
 {
     public class RelayCommand : ICommand
     {

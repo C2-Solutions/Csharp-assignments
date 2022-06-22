@@ -1,4 +1,4 @@
-﻿using Airbnb_klas.Model;
+﻿using AirbnbDashboard.Model;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,9 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Airbnb_klas.Classes;
+using AirbnbDashboard.Classes;
 
-namespace Airbnb_klas.ViewModel
+namespace AirbnbDashboard.ViewModel
 {
     public class MainWindowViewModel
     {
@@ -23,11 +23,11 @@ namespace Airbnb_klas.ViewModel
         public ICommand RemoveLandlordClick { get; set; }
         public ICommand RemoveHouseClick { get; set; }
 
-        private AirbnbContext _db;
+        private AirbnbDashboardContext _db;
 
         public MainWindowViewModel()
         {
-             _db = new AirbnbContext();
+             _db = new AirbnbDashboardContext();
 
             _db.Landlords.Include(Landlord => Landlord.Houses).Load();
             _db.Houses.Load();

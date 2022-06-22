@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Airbnb_klas.Model
+namespace AirbnbDashboard.Model
 {
-    public class AirbnbContext : DbContext
+    public class AirbnbDashboardContext : DbContext
     {
         public DbSet<House> Houses { get; set; }
         public DbSet<Landlord> Landlords { get; set; }
@@ -16,7 +16,7 @@ namespace Airbnb_klas.Model
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=(localDB)\\MSSQLLocalDB;Initial Catalog=AirbnbDb;");
+            optionsBuilder.UseSqlServer("Data Source=(localDB)\\MSSQLLocalDB;Initial Catalog=AirbnbDashboardDb;");
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

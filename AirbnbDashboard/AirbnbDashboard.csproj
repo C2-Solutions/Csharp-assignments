@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
-    <RootNamespace>Airbnb_klas</RootNamespace>
+    <RootNamespace>AirbnbDashboard</RootNamespace>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
